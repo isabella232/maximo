@@ -17,7 +17,7 @@ runcmd:
  - echo "ssh-rsa ${sshPubKey}" > /tmp/id_rsa
  - mkdir /tmp/OCPInstall/QuickCluster
  - tar xvf /tmp/OCPInstall/openshift-install-linux.tar.gz -C /tmp/OCPInstall
- - [ wget, -nv, "https://raw.githubusercontent.com/Azure/maximo/main/src/ocp/install-config.yaml", -O, /tmp/OCPInstall/install-config.yaml ]
+ - [ wget, -nv, "https://raw.githubusercontent.com/Azure/maximo/dev/src/ocp/install-config.yaml", -O, /tmp/OCPInstall/install-config.yaml ]
  - |
     export baseDomain="${baseDomain}"
     export clusterName="${clusterName}"
@@ -41,15 +41,9 @@ runcmd:
  - [ wget, -nv, "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.6.49/openshift-client-linux.tar.gz", -O, /tmp/OCPInstall/openshift-client-linux.tar.gz ]
  - tar xvf /tmp/OCPInstall/openshift-client-linux.tar.gz -C /tmp/OCPInstall
  - export KUBECONFIG=/tmp/OCPInstall/QuickCluster/auth/kubeconfig
- - [ wget, -nv, "https://raw.githubusercontent.com/Azure/maximo/main/src/installers/ocp_setup.sh", -O, ocp_setup.sh ]
+ - [ wget, -nv, "https://raw.githubusercontent.com/Azure/maximo/dev/src/installers/ocp_setup.sh", -O, ocp_setup.sh ]
  - chmod +x ocp_setup.sh
  - sudo -E ./ocp_setup.sh
- - [ wget, -nv, "https://raw.githubusercontent.com/Azure/maximo/main/src/installers/mas_deploy.sh", -O, mas_deploy.sh ]
+ - [ wget, -nv, "https://raw.githubusercontent.com/Azure/maximo/dev/src/installers/mas_deploy.sh", -O, mas_deploy.sh ]
  - chmod +x mas_deploy.sh
  - sudo -E ./mas_deploy.sh
- - [ wget, -nv, "https://raw.githubusercontent.com/Azure/maximo/main/src/installers/ocs_deploy.sh", -O, ocs_deploy.sh ]
- - chmod +x ocs_deploy.sh
- - sudo -E ./ocs_deploy.sh
- - [ wget, -nv, "https://raw.githubusercontent.com/Azure/maximo/main/src/installers/cp4d_deploy.sh", -O, cp4d_deploy.sh ]
- - chmod +x cp4d_deploy.sh
- - sudo -E ./cp4d_deploy.sh
